@@ -55,26 +55,32 @@ select ename, sal,
 from emp;
 
 
-
-
 --1.9 Limiting the Number of Rows Returned
+Select * from emp
+LIMIT 6;
 
 
 --1.10 Returning n Random Records from a Table
+select * from emp
+order by random() limit 5;
 
 
 --1.11 Finding Null Values
+--**note: NULL can never be equal to something, hence cannot use  = or !=
+--        MUST use IS NULL or IS NOT NULL
+select * from emp
+where comm is NULL;
 
 
 --1.12 Transforming Nulls into Real Values
+--**note: using COALESCE to replace null with a value
+select COALESCE(comm,0)
+from emp;
 
 
 --1.13 Searching for Patterns
-
-
-
-
-
-
+select ename, job
+from emp
+where deptno in (10,20) AND (ename LIKE '%I%' OR job LIKE '%ER');
 
 
